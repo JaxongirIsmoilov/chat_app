@@ -1,3 +1,5 @@
+import 'package:chat_app/widgets/chat_messages.dart';
+import 'package:chat_app/widgets/new_message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +10,10 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ChiChat', style: TextStyle(color: Theme.of(context).colorScheme.primary),),
+        title: Text(
+          'ChiChat',
+          style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        ),
         actions: [
           IconButton(
             onPressed: () {
@@ -21,8 +26,13 @@ class ChatScreen extends StatelessWidget {
           )
         ],
       ),
-      body: const Center(
-        child: Text('Logged In!'),
+      body: Column(
+        children: const [
+          Expanded(
+            child: ChatMessages(),
+          ),
+          NewMessage(),
+        ],
       ),
     );
   }
